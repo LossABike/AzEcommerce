@@ -8,6 +8,6 @@ interface UserRepositoryInterface extends RepositoryInterface
 {
     public function checkExistAccount($email,$level);
     //public function getUserClient();
-    public function searchAndPaginate($searchBy ,$keyword, $perPage = 10);
+    public function searchAndPaginate($searchBy ,$keyword, $perPage = 10,$orderBy = 'asc');
 
 }

@@ -21,10 +21,10 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 //        return $this->model->whereIn('level',[Constant::user_level_client,Constant::user_level_sealed])->get();
 //    }
     //Use only for Admin
-    public function searchAndPaginate($searchBy ,$keyword, $perPage = 10){
+    public function searchAndPaginate($searchBy ,$keyword, $perPage = 10,$orderBy = 'asc'){
         return $this->model->whereIn('level',[Constant::user_level_client,Constant::user_level_sealed])
                             ->where($searchBy,'like','%' . $keyword . '%')
-                            ->orderBy('id','asc')
+                            ->orderBy('id',$orderBy)
                             ->paginate($perPage)
                             ->appends(['search' => $keyword]);
     }

@@ -31,7 +31,7 @@ abstract class BaseService implements ServiceInterface
     {
         return $this->repository->delete($id);
     }
-    public function searchAndPaginate($searchBy ,$keyword, $perPage = 10){
-        return $this->repository->searchAndPaginate($searchBy ,$keyword, $perPage = 10);
+    public function searchAndPaginate($searchBy ,$keyword, $perPage = 10, $orderBy = 'asc'){
+        return $this->repository->searchAndPaginate($searchBy ,$keyword, $perPage = 10 ,$orderBy = 'asc');
     }
 }

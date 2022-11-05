@@ -65,15 +65,11 @@ Route::prefix('admin')->middleware('checkAdminLogin')->group(function() {
     Route::redirect('','admin/user');
 
     Route::resource('user',\App\Http\Controllers\Admin\UserController::class);
-
     Route::resource('category',\App\Http\Controllers\Admin\ProductCategoryController::class);
-
     Route::resource('brand',\App\Http\Controllers\Admin\BrandController::class);
-
     Route::resource('product',\App\Http\Controllers\Admin\ProductController::class);
-
     Route::resource('product/{product_id}/image',\App\Http\Controllers\Admin\ProductImageController::class);
-
+    Route::resource('order',\App\Http\Controllers\Admin\OrderController::class);
 
     Route::prefix('login')->withoutMiddleware('checkAdminLogin')->middleware('checkAdminAfterLogin')->group(function(){
         Route::get('',[\App\Http\Controllers\Admin\HomeController::class,'getLogin']);

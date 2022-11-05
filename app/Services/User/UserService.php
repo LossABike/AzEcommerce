@@ -16,7 +16,7 @@ class UserService extends BaseService implements UserServiceInterface
     public function getUserClient(){
         return $this->repository->getUserClient();
     }
-    public function searchAndPaginate($searchBy ,$keyword, $perPage = 10){
+    public function searchAndPaginate($searchBy ,$keyword, $perPage = 10,$orderBy = 'asc'){
         return $this->repository->searchAndPaginate($searchBy,$keyword,$perPage);
     }
 

@@ -46,10 +46,10 @@ abstract class BaseRepository implements RepositoryInterface
         return $object->delete();
     }
     //only use for admin
-    public function searchAndPaginate($searchBy ,$keyword, $perPage = 10){
+    public function searchAndPaginate($searchBy ,$keyword, $perPage = 10 , $orderBy = 'asc'){
         return $this->model
             ->where($searchBy,'like','%' . $keyword . '%')
-            ->orderBy('id','asc')
+            ->orderBy('id',$orderBy)
             ->paginate($perPage)
             ->appends(['search' => $keyword]);
     }

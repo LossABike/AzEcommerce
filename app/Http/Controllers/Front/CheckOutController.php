@@ -14,16 +14,19 @@ class CheckOutController extends Controller
 {
     private $orderDetailService;
     private $orderService;
+
     public function index(){
         $carts = Cart::content();
         $total = Cart::total();
         $subtotal = Cart::subtotal();
         return view('front.checkout.index',compact('carts','total','subtotal'));
     }
+
     public function __construct(OrderDetailServiceInterface $orderDetailService , OrderServiceInterface $orderService){
         $this->orderDetailService = $orderDetailService;
         $this->orderService = $orderService;
     }
+
     public function addOrder(Request $request){
 
         //add item
