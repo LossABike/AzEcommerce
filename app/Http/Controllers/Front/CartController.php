@@ -84,12 +84,28 @@ class CartController extends Controller
 
     public function update(Request $request){
         if($request->ajax()){
+
+            $cart = Cart::content()->where('rowId', $request->rowId)->first();
+
+            $product_id = $cart->id;
+            $size = $cart->options->size;
+
+            //get max qty from product by size in database
+            $maxQty = ProductDetail::where('product_id',$product_id)->where('size',$size)->value('qty') ;
+
+            //handle max Qty notification
+            if($request->qty > $maxQty ) {
+                $request->qty = $maxQty;
+                $response['notification'] = "Limit product " . $cart->name ." is ". $maxQty;
+            }
             $response['cart'] = Cart::update($request->rowId,$request->qty);
             $response['count'] = Cart::count();
             $response['total'] = Cart::total();
             $response['subtotal'] = Cart::subtotal();
+
             return $response;
         }
+        return back();
     }
 
 }

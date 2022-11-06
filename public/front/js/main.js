@@ -430,7 +430,7 @@ function updateCart(rowId,qty){
             if(qty === 0){
                 cartHover_existItem.remove();
             }else {
-                cartHover_existItem.find('.product-selected p').text('$' + response['cart'].price.toFixed(2) + 'x' + response['cart'].qty);
+                cartHover_existItem.find('.product-selected p').text('$' + response['cart'].price.toFixed(2) + 'x' + response['cart'].qty + ' - '+ response['cart'].options.size);
             }
 
             //Handler in shop/cart
@@ -446,7 +446,12 @@ function updateCart(rowId,qty){
             $('.cart-total span').text('$' + response['total']);
 
 
-            alert('Update cart successful! ');
+            if(response['notification']){
+                alert(response['notification']);
+            }else {
+                alert('Update product successfully');
+            }
+
             console.log(response)
         },
         error:function(response){
