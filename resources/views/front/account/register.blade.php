@@ -27,11 +27,13 @@
                 <div class="col-lg-6 offset-lg-3">
                     <div class="register-form">
                         <h2>Register</h2>
+
                                 @if(session('notification'))
                                     <div class="alert alert-warning" role="alert">
                                         {{session('notification')}}
                                     </div>
                                 @endif()
+
                         <form action="" method="post">
                             @csrf
                             <div class="group-input">
@@ -39,8 +41,8 @@
                                 <input type="text" id="name" name="name">
                             </div>
                             <div class="group-input">
-                                <label for="email">Email address *</label>
-                                <input type="email" id="email" name="email">
+                                <label for="email_check">Email address *</label>
+                                <input type="email" id="email_check" name="email" onkeyup="checkEmailExist()">
                             </div>
                             <div class="group-input">
                                 <label for="pass">Password *</label>

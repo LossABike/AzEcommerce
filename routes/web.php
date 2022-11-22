@@ -48,6 +48,7 @@ Route::prefix('account')->middleware('checkAfterLogin')->group(function(){
     Route::post('login',[\App\Http\Controllers\Front\AccountController::class,'checkLogin']);
     Route::get('logout',[\App\Http\Controllers\Front\AccountController::class,'logout'])->withoutMiddleware('checkAfterLogin');
     Route::get('register',[\App\Http\Controllers\Front\AccountController::class,'register']);
+    Route::get('checkEmailExist',[\App\Http\Controllers\Front\AccountController::class,'checkEmailExist']);
     Route::post('register',[\App\Http\Controllers\Front\AccountController::class,'postRegister']);
 
     //Order

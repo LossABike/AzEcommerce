@@ -56,8 +56,19 @@ class AccountController extends Controller
     public function register(){
         return view('front.account.register');
     }
-    //post
+
+    public function checkEmailExist(Request $request){
+        if($request->ajax()){
+            $response = [];
+            if($this->userService->checkExistAccount($request->email,Constant::user_level_client)){
+               $response['notification'] = "Email is Exist";
+            }
+            return $response;
+        }
+    }
+
     public function postRegister(Request $request){
+
 
         if($this->userService->checkExistAccount($request->email,Constant::user_level_client)){
             return back()->with('notification','ERROR : Account is Exist !!!');

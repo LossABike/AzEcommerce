@@ -460,5 +460,29 @@ function updateCart(rowId,qty){
         },
 
     })
+
+}
+
+function checkEmailExist(){
+    var email = $('#email_check').val();
+    $.ajax({
+        type:"GET",
+        url: "account/checkEmailExist",
+        data:{email:email},
+        success:function(response){
+            if(response['notification']){
+                alert(response['notification']);
+                console.log(response['notification']);
+            } else console.log("acc chua tao");
+
+        },
+        error:function(response){
+            console.log("check fail");
+        },
+
+
+    })
+
+
 }
 
